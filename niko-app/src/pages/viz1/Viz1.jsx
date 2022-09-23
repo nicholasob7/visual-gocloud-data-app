@@ -51,18 +51,13 @@ export const arrivalsData = {
     labels,
     datasets: [
         {
-            label: "TimePeriod",
+            label: { "TimePeriod": "Arrivals" },
             data: labels.map(() => []),
             borderColor: "rgb(0, 0, 255)",
             backgroundColor: "rgba(0, 0, 255, 0.5)",
 
         },
-        {
-            label: "Arrivals",
-            data: labels.map(() => []),
-            borderColor: "rgb(0, 0, 255)",
-            backgroundColor: "rgba(0, 0, 255, 0.5)",
-        },
+
     ],
 };
 
@@ -78,7 +73,7 @@ export default function PlotExample() {
     const transformListIntoXYList = (input_list_of_dict, key) => {
         let transformed_dict = {};
         for (const i in input_list_of_dict) {
-            transformed_dict[(input_list_of_dict[i]["date"])] = input_list_of_dict[i][key];
+            transformed_dict[(input_list_of_dict[i]["timeperiod"])] = input_list_of_dict[i][key];
         }
 
         let output_list = [];
@@ -99,18 +94,19 @@ export default function PlotExample() {
     useEffect(() => {
         getMigrationData().then((response) => {
             const data = response;
-            const arrivals = transformListIntoXYList(data, "arrivals");
-            const arrivals_x = getPositionList(arrivals, "x");
+            const [timeperiod, arrivals] = transformListIntoXYList("timeperiod.x", "arrivals.y");
+            // const timeperiod_x = getPositionList(data, "x");
             const input_data = {
                 labels: labels,
+                timeperiod: getPositionList(timeperiod, "x"),
                 arrivals: getPositionList(arrivals, "y"),
             };
             setData({
-                labels: arrivals_x,
+                labels: input_data.labels,
                 datasets: [
                     {
-                        label: "arrivals",
-                        data: input_data.monthly,
+                        label: "timeperiod", "arrivals"
+                            : input_data, ["timeperiod"]: ["arrivals"],
                         borderColor: "rgb(0, 0, 255)",
                         backgroundColor: "rgba(0, 0, 255, 0.5)",
                     },
