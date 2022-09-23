@@ -7,7 +7,7 @@ import {
     Home, Viz1, Viz2
 } from './pages';
 // import "./style/dark.scss"
-import { useContext } from "react";
+// import { useContext } from "react";
 // import DarkModeContext from "./context/darkModeContext";
 
 
@@ -15,7 +15,7 @@ import { useContext } from "react";
 
 function App() {
 
-    const { } = useContext();
+    // const { App } = useContext();
     return (
         <div>
             <BrowserRouter>
@@ -26,7 +26,7 @@ function App() {
 
                     {/* Pages */}
                     <Route path="/viz1" element={<Viz1 />} />
-                    {/* <Route path="/viz2" element={<Viz2 />} /> */}
+                    <Route path="/viz2" element={<Viz2 />} />
                 </Routes>
             </BrowserRouter>
         </div>

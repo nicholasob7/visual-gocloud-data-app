@@ -47,7 +47,7 @@ export const options = {
 
 const labels = [0, 1];
 
-export const migrationData = {
+export const arrivalsData = {
     labels,
     datasets: [
         {
@@ -60,12 +60,12 @@ export const migrationData = {
 };
 
 export default function PlotExample() {
-    const [data, setData] = useState(migrationData);
+    const [data, setData] = useState(arrivalsData);
 
-    const dateTimeFormat = (input_date) => {
-        let date = new Date(input_date);
-        return date.toLocaleDateString();
-    };
+    // const date = (input_date) => {
+    //     let date = new Date(input_date);
+    //     return date.toLocaleDateString();
+    // };
 
 
     const transformListIntoXYList = (input_list_of_dict, key) => {
@@ -96,7 +96,7 @@ export default function PlotExample() {
             const arrivals_x = getPositionList(arrivals, "x");
             const input_data = {
                 labels: labels,
-                monthly: getPositionList(monthly, "y"),
+                arrivals: getPositionList(arrivals, "y"),
             };
             setData({
                 labels: arrivals_x,
