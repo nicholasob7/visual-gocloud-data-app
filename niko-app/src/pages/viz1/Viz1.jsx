@@ -51,7 +51,14 @@ export const arrivalsData = {
     labels,
     datasets: [
         {
-            label: "arrivals",
+            label: "TimePeriod",
+            data: labels.map(() => []),
+            borderColor: "rgb(0, 0, 255)",
+            backgroundColor: "rgba(0, 0, 255, 0.5)",
+
+        },
+        {
+            label: "Arrivals",
             data: labels.map(() => []),
             borderColor: "rgb(0, 0, 255)",
             backgroundColor: "rgba(0, 0, 255, 0.5)",
