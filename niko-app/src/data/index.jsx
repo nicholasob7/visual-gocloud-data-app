@@ -1,1 +1,0 @@
-export { default as migrationData } from './data/International_migration.json';

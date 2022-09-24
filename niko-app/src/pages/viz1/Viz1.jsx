@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
-import migrationData from "../../data/International_migration.json"
+import { migrationData } from "../../data/International_migration.json"
 import {
     Chart as ChartJS,
     CategoryScale,
