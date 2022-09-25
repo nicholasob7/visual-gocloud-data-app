@@ -37,7 +37,7 @@ export const options = {
     scales: {
         y: {
             type: "logarithmic",
-            position: "right", // `axis` is determined by the position as `'y'`
+            position: "right", // `arrivals at 'y' is a number which plots at date 'x' in json data`
         },
     },
 };
