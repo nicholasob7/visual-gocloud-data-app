@@ -31,7 +31,7 @@ ChartJS.register(
 );
 
 export const options = {       // options for the chart
-    responsive: true,
+    responsive: true,      // responsive to window size
     plugins: {
         legend: {
             position: "top",
