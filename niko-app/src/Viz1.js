@@ -1,3 +1,10 @@
+// Display Arrivals into New Zealand from 1921 to 2021
+// resulting visualization toggles between real numbers and logarithmic scale of identical data.
+// the point of the visualization is to "discover" trend impact of WWII being comparable to trend impact of Covid 19
+// whereas in the non logarithmic visualization the impact of WWII is not visible.
+
+
+
 import React, { useState, useEffect } from "react";
 import { Line } from 'react-chartjs-2';
 import {
@@ -23,7 +30,7 @@ ChartJS.register(
     LogarithmicScale
 );
 
-export const options = {
+export const options = {       // options for the chart
     responsive: true,
     plugins: {
         legend: {
@@ -42,12 +49,12 @@ export const options = {
     },
 };
 
-export default function PlotExample() {
-    const [data, setData] = useState({
+export default function PlotExample() { // to visualise 2 plots which are "toggles" a simple "app" object has been created.
+    const [data, setData] = useState({  // data is the state of the app
         labels: [],
         datasets: [
             {
-                label: "Arrivals",
+                label: "Arrivals",  // label is the name of the dataset
                 data: [],
                 fill: false,
                 borderColor: "rgb(75, 192, 192)",
@@ -56,28 +63,28 @@ export default function PlotExample() {
         ],
     });
 
-    const [isLogScale, setIsLogScale] = useState(false);
+    const [isLogScale, setIsLogScale] = useState(false);    // isLogScale is the state of the app
 
-    const getData = async () => {
-        let response = await fetch('data.json'
+    const getData = async () => {   // getData is the function which fetches the data from the API
+        let response = await fetch('data.json'  // data.json is the file which contains the data
             , {
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json', // the data is in json format
                     'Accept': 'application/json'
                 }
             }
         );
 
-        const myJson = await response.json();
+        const myJson = await response.json();   // myJson is the variable which contains the data
         return myJson;
     }
 
-    const transformListIntoXYList = (input_list_of_dict, key) => {
+    const transformListIntoXYList = (input_list_of_dict, key) => {  // transformListIntoXYList is the function which transforms the data into the format required by the chart
 
-        let output_list = [[], []];
+        let output_list = [[], []]; // output_list is the variable which contains the transformed data
         input_list_of_dict.forEach(item => {
-            output_list[0].push(item[key]);
-            output_list[1].push(item["TimePeriod"]);
+            output_list[0].push(item[key]); // output_list[0] is the list of dates
+            output_list[1].push(item["TimePeriod"]);    // output_list[1] is the list of arrivals
         });
 
         return output_list;
@@ -85,28 +92,28 @@ export default function PlotExample() {
 
 
 
-    useEffect(() => {
-        async function getLineData() {
+    useEffect(() => {   // useEffect is the function which is called when the app is loaded
+        async function getLineData() {  // getLineData is the function which is called when the app is loaded
             let jsonData = await getData();
-            let lineData = transformListIntoXYList(jsonData, "Arrivals");
-            let graphData = {
-                labels: lineData[1],
+            let lineData = transformListIntoXYList(jsonData, "Arrivals");   // lineData is the variable which contains the transformed data
+            let graphData = {   // graphData is the variable which contains the data in the format required by the chart
+                labels: lineData[1],        // graphData[0] is the list of dates
                 datasets: [
                     {
                         label: "Arrivals",
-                        data: lineData[0],
+                        data: lineData[0],  // graphData[1] is the list of arrivals
                         fill: false,
                         borderColor: "rgb(75, 192, 192)",
                         tension: 0.1,
                     },
                 ],
             };
-            setData(graphData);
+            setData(graphData); // setData is the function which sets the data in the app
         };
-        getLineData();
+        getLineData();  // getLineData is the function which is called when the app is loaded
     }, []);
     let options = [];
-    if (isLogScale) {
+    if (isLogScale) {   // if isLogScale is true then the chart is displayed with logarithmic scale
         options = {
             responsive: true,
             plugins: {
