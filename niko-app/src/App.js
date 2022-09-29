@@ -8,6 +8,7 @@ function App() {
         <div className="App">
             < Viz1 />
             < Viz2 />
+
         </div>
     );
 }
