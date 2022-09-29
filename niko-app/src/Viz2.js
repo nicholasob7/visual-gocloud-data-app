@@ -84,7 +84,7 @@ export default function PlotExample() { // to visualise 2 plots which are "toggl
         let output_list = [[], []]; // output_list is the variable which contains the transformed data
         input_list_of_dict.forEach(item => {
             output_list[0].push(item[key]); // output_list[0] is the list of dates
-            output_list[1].push(item["Birth per 1000"]);    // output_list[1] is the list of arrivals
+            output_list[1].push(item["Year"]);    // output_list[1] is the list of arrivals
         });
 
         return output_list;
