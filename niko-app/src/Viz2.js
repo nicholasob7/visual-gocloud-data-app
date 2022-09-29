@@ -1,7 +1,7 @@
-// Display Arrivals into New Zealand from 1921 to 2021
+// Display Birth Rates into New Zealand from 1921 to 2021
 // resulting visualization toggles between real numbers and logarithmic scale of identical data.
-// the point of the visualization is to "discover" trend impact of WWII being comparable to trend impact of Covid 19
-// whereas in the non logarithmic visualization the impact of WWII is not visible.
+// the point of the visualization is to "discover" similarity between the two scales
+// whereas the two scales the visual impression is very similar.
 
 
 
@@ -83,8 +83,8 @@ export default function PlotExample() { // to visualise 2 plots which are "toggl
 
         let output_list = [[], []]; // output_list is the variable which contains the transformed data
         input_list_of_dict.forEach(item => {
-            output_list[0].push(item[key]); // output_list[0] is the list of dates
-            output_list[1].push(item["Year"]);    // output_list[1] is the list of arrivals
+            output_list[0].push(item[key]); // output_list[0] is the list of biennial and annual dates
+            output_list[1].push(item["Year"]);    // output_list[1] is the average birth rate per 1000 people 
         });
 
         return output_list;
@@ -97,11 +97,11 @@ export default function PlotExample() { // to visualise 2 plots which are "toggl
             let jsonData = await getData();
             let lineData = transformListIntoXYList(jsonData, "Birth per 1000");   // lineData is the variable which contains the transformed data
             let graphData = {   // graphData is the variable which contains the data in the format required by the chart
-                labels: lineData[1],        // graphData[0] is the list of dates
+                labels: lineData[1],        // graphData[0] is the list of biennial and annual dates
                 datasets: [
                     {
                         label: "Birth per 1000",
-                        data: lineData[0],  // graphData[1] is the list of arrivals
+                        data: lineData[0],  // graphData[1] is the list of average birth rate per 1000 people
                         fill: false,
                         borderColor: "rgb(75, 192, 192)",
                         tension: 0.1,
