@@ -1,7 +1,7 @@
-// Display Birth Rates into New Zealand from 1921 to 2021
+// Display Birth Rates in New Zealand from 1921 to 2021
 // resulting visualization toggles between real numbers and logarithmic scale of identical data.
 // the point of the visualization is to "discover" similarity between the two scales
-// whereas the two scales the visual impression is very similar.
+// wherein two scales the visual impression is really similar.
 
 
 

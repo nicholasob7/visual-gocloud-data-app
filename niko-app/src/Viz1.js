@@ -6,7 +6,7 @@
 
 
 import React, { useState, useEffect } from "react";
-import DatePicker from "react-datepicker";
+// import DatePicker from "react-datepicker";
 import { Line } from 'react-chartjs-2';
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -53,7 +53,7 @@ export const options = {       // options for the chart
 };
 
 export default function PlotExample() {
-    const [selectedDate, setSelectedDate] = useState(new Date("1921-01-01")); // set start date to 1921
+    // const [selectedDate, setSelectedDate] = useState(new Date("1921-01-01")); // set start date to 1921
     const [data, setData] = useState({  // data is the state of the app
         labels: [],
         datasets: [
@@ -156,7 +156,6 @@ export default function PlotExample() {
         <div className="App">
             <h1>Aotearoa Arrivals Across a Century</h1>
             <button onClick={() => setIsLogScale(!isLogScale)}>Real Number Left vs Logarithmic Number Right</button>
-            <DatePicker selected={selectedDate} onChange={date => setSelectedDate(date)} />
             <Line data={data} options={options} />
         </div>
     );
