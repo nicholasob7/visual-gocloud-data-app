@@ -6,10 +6,7 @@
 
 
 import React, { useState, useEffect } from "react";
-// import DatePicker from "react-datepicker";
 import { Line } from 'react-chartjs-2';
-import "react-datepicker/dist/react-datepicker.css";
-
 import {
     Chart as ChartJS,
     CategoryScale,
