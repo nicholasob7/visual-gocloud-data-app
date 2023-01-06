@@ -50,7 +50,6 @@ export const options = {       // options for the chart
 };
 
 export default function PlotExample() {
-    // const [selectedDate, setSelectedDate] = useState(new Date("1921-01-01")); // set start date to 1921
     const [data, setData] = useState({  // data is the state of the app
         labels: [],
         datasets: [
